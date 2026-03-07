@@ -1,0 +1,60 @@
+/* ========================= projects.html ========================= */
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projects — Celeste Lorenzo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html" class="brand">Celeste Lorenzo</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="projects">
+    <aside class="projects-left">
+      <div class="vertical-title">PROJECTS</div>
+    </aside>
+
+    <section class="projects-right">
+      <article class="project-card">
+        <h2>Hotel Management System — Thesis Project</h2>
+        <p class="project-desc">Design and implementation of a hotel management system using Scrum. Authentication, reservation system, admin dashboard.</p>
+        <p class="tech">Django · MySQL · HTML · CSS · JavaScript</p>
+        <div class="project-screenshot"><img src="assets/project1.png" alt="Hotel Copali screenshot"></div>
+        <div class="project-links">
+          <a href="#" class="btn">View demo</a>
+          <a href="#" class="btn ghost">Source</a>
+        </div>
+      </article>
+
+      <!-- Add more project-card blocks as needed -->
+
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content">
+      <button id="closeModal" class="close">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <footer id="contact" class="footer">
+    <p>Built by Celeste Lorenzo — <a href="mailto:celeste@example.com">celeste@example.com</a></p>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
+
