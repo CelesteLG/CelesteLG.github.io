@@ -1,29 +1,76 @@
-/* ========================= js/scripts.js ========================= */
+// ===============================
+// MENU MOBILE
+// ===============================
 
-// Menu toggle
-document.addEventListener('DOMContentLoaded',function(){
-  const menuBtn = document.getElementById('menuBtn');
-  const mainNav = document.getElementById('mainNav');
-  if(menuBtn){
-    menuBtn.addEventListener('click',()=>{
-      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', String(!expanded));
-      if(mainNav) mainNav.style.display = expanded ? 'none' : 'flex';
-    });
-  }
+const menuBtn = document.querySelector("#menuBtn");
+const navLinks = document.querySelector("#navLinks");
 
-  // Simple modal demo for project images
-  const modal = document.getElementById('modal');
-  const closeModal = document.getElementById('closeModal');
-  if(closeModal){
-    closeModal.addEventListener('click',()=>{ modal.classList.add('hidden'); modal.setAttribute('aria-hidden','true'); });
-  }
-  // clickable project screenshots to open a larger preview
-  document.querySelectorAll('.project-screenshot img').forEach(img=>{
-    img.addEventListener('click',()=>{
-      const body = document.getElementById('modalBody');
-      if(body){ body.innerHTML = '<img src="'+img.src+'" style="max-width:100%;display:block">'; }
-      if(modal){ modal.classList.remove('hidden'); modal.setAttribute('aria-hidden','false'); }
-    });
+if(menuBtn){
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
   });
-});
+}
+
+
+// ===============================
+// SCROLL ANIMATION
+// ===============================
+
+const elements = document.querySelectorAll(".reveal");
+
+const revealOnScroll = () => {
+
+  const triggerBottom = window.innerHeight * 0.85;
+
+  elements.forEach(el => {
+
+    const elementTop = el.getBoundingClientRect().top;
+
+    if(elementTop < triggerBottom){
+      el.classList.add("show");
+    }
+
+  });
+
+};
+
+setTimeout(() => {
+  revealOnScroll();
+}, 1000);
+
+window.addEventListener("scroll", revealOnScroll);
+
+
+// ===============================
+// PROJECT SORT BY DATE
+// ===============================
+
+const projectsContainer = document.querySelector(".projects-grid");
+
+if(projectsContainer){
+
+  const projects = Array.from(projectsContainer.children);
+
+  projects.sort((a,b)=>{
+
+    const dateA = new Date(a.dataset.date);
+    const dateB = new Date(b.dataset.date);
+
+    return dateB - dateA;
+
+  });
+
+  projects.forEach(project => projectsContainer.appendChild(project));
+
+}
+
+
+// ===============================
+// FOOTER YEAR AUTO
+// ===============================
+
+const year = document.querySelector("#year");
+
+if(year){
+  year.textContent = new Date().getFullYear();
+}
